@@ -1,0 +1,51 @@
+@page
+@model ModificacionModel
+@{
+    ViewData["Title"] = "Modificación de producto";
+}
+
+<div class="bp-form bp-form-wide">
+    <h2>Modificación de producto</h2>
+
+    @if (Model.MensajeOk != null)
+    {
+        <div class="bp-msg-ok">@Model.MensajeOk</div>
+    }
+    @if (Model.Error != "")
+    {
+        <div class="bp-msg-error">@Model.Error</div>
+    }
+
+    @* Paso 1: elegir el producto (GET con ?id=...) *@
+    <form method="get">
+        <label for="id">Producto a modificar</label>
+        <div class="bp-inline">
+            <select id="id" name="id" asp-items="Model.Productos">
+                <option value="">-- Elegí un producto --</option>
+            </select>
+            <button type="submit" class="bp-btn">Seleccionar</button>
+        </div>
+    </form>
+
+    @* Paso 2: editar los campos y guardar (POST al handler Guardar) *@
+    @if (Model.HayProducto)
+    {
+        <hr />
+        <form method="post" asp-page-handler="Guardar">
+            <input type="hidden" asp-for="IdProducto" />
+
+            <label asp-for="Nombre">Nombre</label>
+            <input asp-for="Nombre" maxlength="100" />
+
+            <label asp-for="Precio">Precio (U$S)</label>
+            <input asp-for="Precio" inputmode="decimal" />
+
+            <label asp-for="IdCategoria">Categoría</label>
+            <select asp-for="IdCategoria" asp-items="Model.Categorias"></select>
+
+            <button type="submit" class="bp-btn">Guardar cambios</button>
+        </form>
+    }
+
+    <a class="bp-volver" asp-page="/Index">&larr; Volver al inicio</a>
+</div>

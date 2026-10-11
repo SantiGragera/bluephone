@@ -1,0 +1,59 @@
+@page
+@model BajaModel
+@{
+    ViewData["Title"] = "Baja de producto";
+}
+
+<h2 class="bp-page-title">Baja de producto</h2>
+
+@if (Model.MensajeOk != null)
+{
+    <div class="bp-msg-ok">@Model.MensajeOk</div>
+}
+@if (Model.MensajeError != null)
+{
+    <div class="bp-msg-error">@Model.MensajeError</div>
+}
+@if (Model.Error != "")
+{
+    <div class="bp-msg-error">@Model.Error</div>
+}
+
+<table class="bp-tabla">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th class="bp-num">Precio</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Productos)
+        {
+            <tr>
+                <td>@p.IdProducto</td>
+                <td>@p.Nombre</td>
+                <td>@p.Categoria</td>
+                <td class="bp-num">@p.PrecioTexto</td>
+                <td>
+                    @* Mensaje de confirmación antes de eliminar *@
+                    <form method="post" asp-page-handler="Borrar" data-nombre="@p.Nombre"
+                          onsubmit="return confirm('¿Seguro que querés eliminar &quot;' + this.dataset.nombre + '&quot;? Esta acción no se puede deshacer.');">
+                        <input type="hidden" name="id" value="@p.IdProducto" />
+                        <button type="submit" class="bp-btn bp-btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        @if (!Model.Productos.Any())
+        {
+            <tr>
+                <td colspan="5">No hay productos cargados.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="bp-volver" asp-page="/Index">&larr; Volver al inicio</a>

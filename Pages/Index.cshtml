@@ -1,0 +1,29 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="bp-hero">
+    <h1>Catálogo de productos</h1>
+    <p>Cargá, consultá, corregí o dá de baja los productos de la tienda.</p>
+</section>
+
+<section class="bp-menu">
+    <a class="bp-card" asp-page="/Alta">
+        <h2>Alta</h2>
+        <p>Cargar un producto nuevo</p>
+    </a>
+    <a class="bp-card" asp-page="/Consulta">
+        <h2>Consulta</h2>
+        <p>Ver el listado de productos y buscar por nombre</p>
+    </a>
+    <a class="bp-card" asp-page="/Modificacion">
+        <h2>Modificación</h2>
+        <p>Cambiar el nombre, el precio o la categoría de un producto</p>
+    </a>
+    <a class="bp-card" asp-page="/Baja">
+        <h2>Baja</h2>
+        <p>Eliminar un producto del catálogo</p>
+    </a>
+</section>

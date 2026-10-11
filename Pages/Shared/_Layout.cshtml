@@ -1,0 +1,35 @@
+@{
+    // Página actual, para marcar el enlace activo del menú
+    var pagina = ViewContext.RouteData.Values["page"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blue Phone</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="bp-header">
+        <a class="bp-brand" asp-page="/Index">Blue Phone</a>
+        <nav class="bp-nav">
+            <a asp-page="/Index" class="@(pagina == "/Index" ? "activo" : null)">Inicio</a>
+            <a asp-page="/Alta" class="@(pagina == "/Alta" ? "activo" : null)">Alta</a>
+            <a asp-page="/Consulta" class="@(pagina == "/Consulta" ? "activo" : null)">Consulta</a>
+            <a asp-page="/Modificacion" class="@(pagina == "/Modificacion" ? "activo" : null)">Modificación</a>
+            <a asp-page="/Baja" class="@(pagina == "/Baja" ? "activo" : null)">Baja</a>
+        </nav>
+    </header>
+
+    <main class="bp-main">
+        @RenderBody()
+    </main>
+
+    <footer class="bp-footer">
+        Blue Phone, tienda de productos Apple. Laboratorio de Programación 3, ISSD 2026.
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

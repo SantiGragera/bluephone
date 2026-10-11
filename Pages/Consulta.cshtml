@@ -1,0 +1,50 @@
+@page
+@model ConsultaModel
+@{
+    ViewData["Title"] = "Consulta de productos";
+}
+
+<h2 class="bp-page-title">Consulta de productos</h2>
+
+@if (Model.Error != "")
+{
+    <div class="bp-msg-error">@Model.Error</div>
+}
+
+<form method="get" class="bp-toolbar">
+    <input asp-for="Buscar" placeholder="Buscar por nombre..." />
+    <button type="submit" class="bp-btn">Buscar</button>
+    <a class="bp-volver" style="margin-top:0" asp-page="/Consulta">Ver todos</a>
+</form>
+
+<p class="bp-count">@Model.Productos.Count producto(s) encontrado(s)</p>
+
+<table class="bp-tabla">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th class="bp-num">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Productos)
+        {
+            <tr>
+                <td>@p.IdProducto</td>
+                <td>@p.Nombre</td>
+                <td>@p.Categoria</td>
+                <td class="bp-num">@p.PrecioTexto</td>
+            </tr>
+        }
+        @if (!Model.Productos.Any())
+        {
+            <tr>
+                <td colspan="4">No se encontraron productos.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="bp-volver" asp-page="/Index">&larr; Volver al inicio</a>

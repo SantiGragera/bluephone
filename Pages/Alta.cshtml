@@ -1,0 +1,33 @@
+@page
+@model AltaModel
+@{
+    ViewData["Title"] = "Alta de producto";
+}
+
+<form method="post" class="bp-form">
+    <h2>Alta de producto</h2>
+
+    @if (Model.MensajeOk != null)
+    {
+        <div class="bp-msg-ok">@Model.MensajeOk</div>
+    }
+    @if (Model.Error != "")
+    {
+        <div class="bp-msg-error">@Model.Error</div>
+    }
+
+    <label asp-for="Nombre">Nombre</label>
+    <input asp-for="Nombre" maxlength="100" placeholder="Ej: iPhone 16 Pro" />
+
+    <label asp-for="Precio">Precio (U$S)</label>
+    <input asp-for="Precio" inputmode="decimal" placeholder="Ej: 799.00" />
+
+    <label asp-for="IdCategoria">Categoría</label>
+    <select asp-for="IdCategoria" asp-items="Model.Categorias">
+        <option value="">-- Elegí una categoría --</option>
+    </select>
+
+    <button type="submit" class="bp-btn">Confirmar</button>
+    <br />
+    <a class="bp-volver" asp-page="/Index">&larr; Volver al inicio</a>
+</form>

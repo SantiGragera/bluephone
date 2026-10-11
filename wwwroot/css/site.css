@@ -1,0 +1,215 @@
+/* ===== Blue Phone - estilos ===== */
+
+:root {
+    --fondo: #eceff3;
+    --superficie: #ffffff;
+    --tinta: #14213d;
+    --apagado: #5b6778;
+    --linea: #cfd6e0;
+    --linea-suave: #e4e8ee;
+    --azul: #1a4fd8;
+    --azul-oscuro: #123aa6;
+    --ok-fondo: #e6f4ea;
+    --ok-texto: #1e6b3a;
+    --error-fondo: #fbe9e7;
+    --error-texto: #a52019;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI Variable Text", "Segoe UI", -apple-system, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background: var(--fondo);
+    color: var(--tinta);
+}
+
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+/* ----- Encabezado ----- */
+.bp-header {
+    background: var(--superficie);
+    border-bottom: 1px solid var(--linea);
+    padding: 0 max(20px, calc((100% - 960px) / 2));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px 24px;
+    min-height: 60px;
+}
+.bp-brand {
+    color: var(--azul);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+}
+.bp-nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.bp-nav a {
+    color: var(--apagado);
+    text-decoration: none;
+    padding: 18px 0 16px;
+    border-bottom: 2px solid transparent;
+    font-size: .95rem;
+}
+.bp-nav a:hover { color: var(--tinta); }
+.bp-nav a.activo { color: var(--tinta); border-bottom-color: var(--azul); font-weight: 600; }
+
+.bp-main { max-width: 960px; margin: 0 auto; padding: 40px 20px 56px; min-height: 62vh; }
+
+/* ----- Inicio ----- */
+.bp-hero { margin-bottom: 40px; }
+.bp-hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+.bp-hero p { margin: 0; color: var(--apagado); font-size: 1.1rem; max-width: 46ch; }
+
+.bp-menu { border-top: 1px solid var(--linea); }
+.bp-card {
+    display: grid;
+    grid-template-columns: minmax(170px, 280px) 1fr;
+    align-items: baseline;
+    gap: 4px 24px;
+    padding: 24px 10px;
+    border-bottom: 1px solid var(--linea);
+    text-decoration: none;
+    color: inherit;
+}
+.bp-card h2 { margin: 0; font-size: 1.8rem; font-weight: 600; letter-spacing: -0.025em; }
+.bp-card p { margin: 0; color: var(--apagado); }
+.bp-card:hover { background: var(--superficie); }
+.bp-card:hover h2 { color: var(--azul); }
+
+/* ----- Formularios ----- */
+.bp-form {
+    background: var(--superficie);
+    padding: 28px 30px 24px;
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    max-width: 520px;
+}
+.bp-form-wide { max-width: 660px; }
+.bp-form h2 { margin: 0 0 8px; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+.bp-form label { display: block; margin: 18px 0 6px; font-weight: 600; font-size: .95rem; }
+.bp-form input[type="text"],
+.bp-form select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--linea);
+    border-radius: 4px;
+    font: inherit;
+    color: var(--tinta);
+    background: var(--superficie);
+}
+.bp-form input:focus, .bp-form select:focus { border-color: var(--azul); }
+.bp-form hr { border: none; border-top: 1px solid var(--linea-suave); margin: 26px 0 4px; }
+
+.bp-inline { display: flex; gap: 10px; align-items: center; }
+.bp-inline .bp-btn { margin-top: 0; white-space: nowrap; }
+
+/* ----- Botones ----- */
+.bp-btn {
+    margin-top: 24px;
+    background: var(--azul);
+    color: #fff;
+    border: 1px solid var(--azul);
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.bp-btn:hover { background: var(--azul-oscuro); border-color: var(--azul-oscuro); }
+.bp-btn-danger {
+    background: transparent;
+    color: var(--error-texto);
+    border-color: var(--error-texto);
+    margin-top: 0;
+    height: 34px;
+    padding: 0 14px;
+    font-size: .9rem;
+}
+.bp-btn-danger:hover { background: var(--error-texto); border-color: var(--error-texto); color: #fff; }
+
+/* ----- Enlaces ----- */
+.bp-volver { display: inline-block; margin-top: 26px; color: var(--azul); text-decoration: none; font-weight: 600; }
+.bp-volver:hover { text-decoration: underline; }
+
+/* ----- Mensajes ----- */
+.bp-msg-ok, .bp-msg-error {
+    padding: 11px 14px;
+    border-radius: 4px;
+    margin: 14px 0 4px;
+    border-left: 4px solid;
+}
+.bp-msg-ok { background: var(--ok-fondo); color: var(--ok-texto); border-left-color: var(--ok-texto); }
+.bp-msg-error { background: var(--error-fondo); color: var(--error-texto); border-left-color: var(--error-texto); }
+
+/* ----- Tablas ----- */
+.bp-page-title { margin: 0 0 18px; font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; }
+
+.bp-toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+.bp-toolbar input[type="text"] {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--linea);
+    border-radius: 4px;
+    font: inherit;
+    min-width: 260px;
+    background: var(--superficie);
+}
+.bp-toolbar input[type="text"]:focus { border-color: var(--azul); }
+.bp-toolbar .bp-btn { margin-top: 0; }
+.bp-count { color: var(--apagado); margin: 0 0 10px; font-size: .95rem; }
+
+.bp-tabla {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--superficie);
+    border: 1px solid var(--linea);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.bp-tabla th {
+    background: #f6f7f9;
+    color: var(--apagado);
+    font-weight: 600;
+    font-size: .9rem;
+    text-align: left;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--linea);
+}
+.bp-tabla td { padding: 12px 16px; border-bottom: 1px solid var(--linea-suave); vertical-align: middle; }
+.bp-tabla tbody tr:last-child td { border-bottom: none; }
+.bp-tabla tbody tr:hover td { background: #f8faff; }
+.bp-tabla .bp-num { text-align: right; font-variant-numeric: tabular-nums; }
+.bp-tabla td form { margin: 0; }
+
+/* ----- Pie ----- */
+.bp-footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 18px 20px 28px;
+    border-top: 1px solid var(--linea);
+    color: var(--apagado);
+    font-size: .9rem;
+}
+
+/* ----- Pantallas chicas ----- */
+@media (max-width: 640px) {
+    .bp-card { grid-template-columns: 1fr; }
+    .bp-card h2 { font-size: 1.5rem; }
+    .bp-form { padding: 22px 18px 20px; }
+    .bp-tabla { display: block; overflow-x: auto; }
+    .bp-inline { flex-wrap: wrap; }
+}
