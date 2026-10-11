@@ -30,7 +30,6 @@ namespace BluePhone.Pages
 
         [TempData] public string? MensajeOk { get; set; }
 
-        // GET ?id=5 -> carga el producto elegido en el formulario de edición
         public void OnGet(int? id)
         {
             if (id.HasValue)
@@ -53,7 +52,6 @@ namespace BluePhone.Pages
             CargarListas(HayProducto ? IdProducto : 0);
         }
 
-        // Botón "Guardar cambios"
         public IActionResult OnPostGuardar()
         {
             CargarListas(IdProducto);
@@ -86,7 +84,6 @@ namespace BluePhone.Pages
                 return Page();
             }
 
-            // Validación pedida: al menos un campo debe haberse modificado
             string nombre = Nombre.Trim();
             bool cambioNombre = nombre != actual.Nombre;
             bool cambioPrecio = precio != actual.Precio;
@@ -155,7 +152,6 @@ namespace BluePhone.Pages
             }
         }
 
-        // Llena los dos <select>: productos (para elegir) y categorías (para reasignar)
         private void CargarListas(int productoSeleccionado)
         {
             Productos = new List<SelectListItem>();

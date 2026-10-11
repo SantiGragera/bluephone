@@ -32,7 +32,6 @@ namespace BluePhone.Pages
             }
         }
 
-        // Handler personalizado: se ejecuta al confirmar la eliminación de una fila
         public IActionResult OnPostBorrar(int id)
         {
             try
@@ -41,12 +40,10 @@ namespace BluePhone.Pages
                 {
                     cn.Open();
 
-                    // Nombre del producto, solo para armar el mensaje
                     var cmdNombre = new SqlCommand("SELECT nombre FROM productos WHERE idProducto = @id", cn);
                     cmdNombre.Parameters.AddWithValue("@id", id);
                     string? nombre = cmdNombre.ExecuteScalar() as string;
 
-                    // Solo se borra de productos: la tabla categorias no se toca
                     var cmd = new SqlCommand("DELETE FROM productos WHERE idProducto = @id", cn);
                     cmd.Parameters.AddWithValue("@id", id);
                     int filas = cmd.ExecuteNonQuery();

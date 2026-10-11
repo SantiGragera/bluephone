@@ -11,23 +11,19 @@ namespace BluePhone.Pages
     {
         private readonly IConfiguration _config;
 
-        // Inyección de dependencias: ASP.NET Core nos entrega IConfiguration (appsettings.json)
         public AltaModel(IConfiguration config)
         {
             _config = config;
         }
 
-        // Controles del formulario enlazados con [BindProperty]
         [BindProperty] public string Nombre { get; set; } = "";
         [BindProperty] public string Precio { get; set; } = "";
         [BindProperty] public int IdCategoria { get; set; }
 
-        // Datos para llenar el <select> de categorías
         public List<SelectListItem> Categorias { get; set; } = new();
 
         public string Error { get; set; } = "";
 
-        // Sobrevive a la redirección (patrón Post-Redirect-Get)
         [TempData] public string? MensajeOk { get; set; }
 
         public void OnGet()
@@ -35,7 +31,6 @@ namespace BluePhone.Pages
             CargarCategorias();
         }
 
-        // Se ejecuta al presionar "Confirmar"
         public IActionResult OnPost()
         {
             CargarCategorias();
@@ -46,8 +41,6 @@ namespace BluePhone.Pages
                 return Page();
             }
 
-            // El precio se lee como texto y se convierte con cultura invariante,
-            // aceptando coma o punto como separador decimal.
             if (!decimal.TryParse(Precio?.Replace(',', '.'), NumberStyles.Number,
                     CultureInfo.InvariantCulture, out decimal precio) || precio <= 0)
             {

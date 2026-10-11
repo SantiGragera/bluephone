@@ -1,5 +1,3 @@
-/* ===== Blue Phone - estilos ===== */
-
 :root {
     --fondo: #eceff3;
     --superficie: #ffffff;
@@ -28,7 +26,6 @@ body {
 
 :focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
 
-/* ----- Encabezado ----- */
 .bp-header {
     background: var(--superficie);
     border-bottom: 1px solid var(--linea);
@@ -60,7 +57,6 @@ body {
 
 .bp-main { max-width: 960px; margin: 0 auto; padding: 40px 20px 56px; min-height: 62vh; }
 
-/* ----- Inicio ----- */
 .bp-hero { margin-bottom: 40px; }
 .bp-hero h1 {
     margin: 0 0 8px;
@@ -87,7 +83,6 @@ body {
 .bp-card:hover { background: var(--superficie); }
 .bp-card:hover h2 { color: var(--azul); }
 
-/* ----- Formularios ----- */
 .bp-form {
     background: var(--superficie);
     padding: 28px 30px 24px;
@@ -115,7 +110,6 @@ body {
 .bp-inline { display: flex; gap: 10px; align-items: center; }
 .bp-inline .bp-btn { margin-top: 0; white-space: nowrap; }
 
-/* ----- Botones ----- */
 .bp-btn {
     margin-top: 24px;
     background: var(--azul);
@@ -140,11 +134,9 @@ body {
 }
 .bp-btn-danger:hover { background: var(--error-texto); border-color: var(--error-texto); color: #fff; }
 
-/* ----- Enlaces ----- */
 .bp-volver { display: inline-block; margin-top: 26px; color: var(--azul); text-decoration: none; font-weight: 600; }
 .bp-volver:hover { text-decoration: underline; }
 
-/* ----- Mensajes ----- */
 .bp-msg-ok, .bp-msg-error {
     padding: 11px 14px;
     border-radius: 4px;
@@ -154,7 +146,6 @@ body {
 .bp-msg-ok { background: var(--ok-fondo); color: var(--ok-texto); border-left-color: var(--ok-texto); }
 .bp-msg-error { background: var(--error-fondo); color: var(--error-texto); border-left-color: var(--error-texto); }
 
-/* ----- Tablas ----- */
 .bp-page-title { margin: 0 0 18px; font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; }
 
 .bp-toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
@@ -195,7 +186,6 @@ body {
 .bp-tabla .bp-num { text-align: right; font-variant-numeric: tabular-nums; }
 .bp-tabla td form { margin: 0; }
 
-/* ----- Pie ----- */
 .bp-footer {
     max-width: 960px;
     margin: 0 auto;
@@ -205,7 +195,6 @@ body {
     font-size: .9rem;
 }
 
-/* ----- Pantallas chicas ----- */
 @media (max-width: 640px) {
     .bp-card { grid-template-columns: 1fr; }
     .bp-card h2 { font-size: 1.5rem; }

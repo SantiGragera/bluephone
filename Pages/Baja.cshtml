@@ -38,7 +38,6 @@
                 <td>@p.Categoria</td>
                 <td class="bp-num">@p.PrecioTexto</td>
                 <td>
-                    @* Mensaje de confirmación antes de eliminar *@
                     <form method="post" asp-page-handler="Borrar" data-nombre="@p.Nombre"
                           onsubmit="return confirm('¿Seguro que querés eliminar &quot;' + this.dataset.nombre + '&quot;? Esta acción no se puede deshacer.');">
                         <input type="hidden" name="id" value="@p.IdProducto" />

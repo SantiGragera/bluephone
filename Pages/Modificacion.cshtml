@@ -16,7 +16,6 @@
         <div class="bp-msg-error">@Model.Error</div>
     }
 
-    @* Paso 1: elegir el producto (GET con ?id=...) *@
     <form method="get">
         <label for="id">Producto a modificar</label>
         <div class="bp-inline">
@@ -27,7 +26,6 @@
         </div>
     </form>
 
-    @* Paso 2: editar los campos y guardar (POST al handler Guardar) *@
     @if (Model.HayProducto)
     {
         <hr />

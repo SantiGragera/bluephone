@@ -14,7 +14,6 @@ namespace BluePhone.Pages
             _config = config;
         }
 
-        // SupportsGet = true permite enlazar el valor desde la URL (?Buscar=...) en un GET
         [BindProperty(SupportsGet = true)] public string? Buscar { get; set; }
 
         public List<Producto> Productos { get; set; } = new();
@@ -28,7 +27,6 @@ namespace BluePhone.Pages
                 {
                     cn.Open();
 
-                    // JOIN entre productos y categorias
                     var cmd = new SqlCommand(
                         @"SELECT p.idProducto, p.nombre, p.precio, p.idCategoria, c.descripcion
                           FROM productos p
