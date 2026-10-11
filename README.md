@@ -49,3 +49,4 @@ Todas las páginas incluyen un hipervínculo para volver al inicio.
 ## Estilos
 
 CSS externo en `wwwroot/css/site.css`, aplicado a todas las páginas desde `Pages/Shared/_Layout.cshtml`.
+"# bluephone" 
